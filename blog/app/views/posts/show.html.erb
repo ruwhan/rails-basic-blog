@@ -12,6 +12,14 @@
   <dd><%= @post.content %></dd>
 </dl>
 
+<h2>Comments</h2>
+<dl>
+  <%= render @post.comments %>
+</dl>
+
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               posts_path, :class => 'btn'  %>
