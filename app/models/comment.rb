@@ -3,5 +3,5 @@ class Comment < ActiveRecord::Base
   attr_accessible :comment, :name
   
   validates :name, :presence => true
-  validates :comment, :presence => true, :length => { :within => 3..1000 }
+  validates :comment, :presence => true, :length => { :within => 3..100000 }
 end

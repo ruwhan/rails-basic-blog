@@ -41,6 +41,9 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
+    current_datetime = DateTime.now
+    @post.created_at = current_datetime
+    @post.last_updated_at = current_datetime
 
     respond_to do |format|
       if @post.save
@@ -57,6 +60,8 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
+    current_datetime = DateTime.now
+    @post.last_updated_at = current_datetime
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
