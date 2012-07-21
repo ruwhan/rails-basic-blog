@@ -1,13 +1,19 @@
 BlogLearning::Application.routes.draw do
-  get "comments/create"
+  #get "comments/create"
 
-  get "comments/destroy"
+  #get "comments/destroy"
+  
+  root :to => "posts#index"
 
   resources :posts do
     resources :comments
   end
   
   resources :users
+  resource :session
+  
+  match '/login' => "sessions#new", :as => "login"
+  match '/logout' => "sessions#destroy", :as => "logout"
   
 
   # The priority is based upon order of creation:

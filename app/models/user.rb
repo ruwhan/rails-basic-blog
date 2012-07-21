@@ -10,9 +10,19 @@ class User < ActiveRecord::Base
                     :format => { :with => /^[^@][\w.-]+@[\w.-]+[.][a-z]{2,4}$/i }
   validates :password, :confirmation => true,
                         :presence => true,
-                        :length => { :within => 6..35 }
+                        :length => { :within => 6..35 },
+                        :if => :password_required?
 
   before_save :encrypt_new_password
+  
+  def self.authenticate(email, passwd)
+    user = find_by_email(email)
+    return user if user && user.authenticated?(passwd)
+  end
+  
+  def authenticated?(passwd)
+    self.password == encrypt(passwd)
+  end
   
   protected
     def encrypt_new_password
@@ -20,7 +30,11 @@ class User < ActiveRecord::Base
       self.password = encrypt(password)
     end
     
-    def encrypt(string_pwd)
-      Digest::SHA1.hexdigest(string_pwd)
+    def password_required?
+      password.blank? || password.present?
+    end
+    
+    def encrypt(passwd)
+      Digest::SHA1.hexdigest(passwd)
     end
 end

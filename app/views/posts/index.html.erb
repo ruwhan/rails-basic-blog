@@ -18,12 +18,19 @@
     <td><%= post.created_at %></td>
     <td><%= post.last_updated_at %></td>
     <td><%= link_to 'Show', post %></td>
+  <% if post.owned_by? current_user %>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+  <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path %> |
+<% if current_user %>
+  <%= link_to 'logout', logout_path %>
+<% else %>
+  <%= link_to 'login', login_path %>
+<% end %>
