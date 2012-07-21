@@ -1,0 +1,9 @@
+<div>
+  <strong>
+    <p><%= comment.name %> said:</p>
+  </strong>
+  <%= link_to "Delete", [comment.post, comment], :confirm => "Are you sure?", :method => :delete  %>
+</div>
+<div>
+  <p><%= comment.comment %></p>
+</div>

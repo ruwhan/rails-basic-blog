@@ -20,6 +20,16 @@
   <%= @post.last_updated_at %>
 </p>
 
+<div>
+  <h2>Comments</h2>
+  <%= render @post.comments %>
+</div>
+
+<div>
+  <strong>Add new comment</strong>
+  <%= render "comments/form" %>
+</div>
+
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
