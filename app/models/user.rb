@@ -1,3 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password
+  has_many :posts
+  
+  attr_accessible :email, :password  
+  validates :password, :confirmation => true
 end
