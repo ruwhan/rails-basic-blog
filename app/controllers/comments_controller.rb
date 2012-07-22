@@ -21,8 +21,6 @@ class CommentsController < ApplicationController
         format.js { render 'fail_create.js.erb' }
       end
     end
-    
-    #redirect_to post_path(@post)
   end
 
   def destroy
@@ -34,6 +32,5 @@ class CommentsController < ApplicationController
       format.html { redirect_to @post, :notice => 'comment deleted' }
       format.js
     end
-    #redirect_to post_path(@post)
   end
 end
