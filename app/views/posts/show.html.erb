@@ -1,32 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div id="alert"><%= notice %></div>
 
-<p>
-  <b>Title:</b>
-  <%= @post.title %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @post.content %>
-</p>
-
-<p>
-  <b>Created at:</b>
-  <%= @post.created_at %>
-</p>
-
-<p>
-  <b>Last updated at:</b>
-  <%= @post.last_updated_at %>
-</p>
-
-<div id="comments">
-  <h2>Comments</h2>
-  <%= render @post.comments %>
+<div class="page-header">
+	<h1><%= @post.title %></h1>
 </div>
 
-<%= link_to "new comment", new_post_comment_path(@post, :format => :js), :remote => true, :id => 'new_comment_link' %>
+<div>
+	<%= simple_format @post.content %>
+</div>
 
+<div>
+	<blockquote class="pull-right"><small>
+		written by <cite><%= @post.user.email %></cite>
+	</small></blockquote>
+</div>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div id="comments">
+	<h2>Comments</h2>
+	<%= render @post.comments %>
+</div>
+
+<div>
+<%= link_to "  New comment", new_post_comment_path(@post, :format => :js), :remote => true, :id => 'new_comment_link', :class => 'label label-info icon-book' %> |
+<% if current_user %>
+	<% if @post.owned_by? current_user %>
+		<%= link_to '  Edit', edit_post_path(@post), :class => 'label label-info icon-pencil' %> |
+	<% end %>
+<% end %>
+<%= link_to '  Back', root_path, :class => 'label label-info icon-align-justify' %>
+</div>

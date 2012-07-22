@@ -1,9 +1,11 @@
 BlogLearning::Application.routes.draw do
+  get "home/index"
+
   #get "comments/create"
 
   #get "comments/destroy"
   
-  root :to => "posts#index"
+  root :to => "home#index"
 
   resources :posts do
     resources :comments

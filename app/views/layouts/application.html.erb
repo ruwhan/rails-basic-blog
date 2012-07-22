@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BlogLearning</title>
+  <title>Blog Learning</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">	
+			<div class="container">
+				<a class="brand" href="">Blog Learning</a>
+				<ul class="nav">
+					<li><%= link_to 'Home', root_path %></li>
+				<% if current_user %>
+				  <li><%= link_to 'Dashboard', posts_path %></li>
+				  <li><%= link_to 'logout', logout_path %></li>
+				<% else %>
+				  <li><%= link_to 'login', login_path %></li>
+				<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<%= yield %>
+			</div>
+		</div>
+	</div>		
 </body>
 </html>

@@ -1,4 +1,5 @@
 <h1>Login</h1>
+<%= notice %>
 <%= form_tag session_path do %>
   <div class="field">
     <%= label_tag :email %><br />
@@ -9,7 +10,7 @@
     <%= password_field_tag :password %>
   </div>
   <div class="actions">
-    <%= submit_tag 'Login' %>
+    <%= submit_tag 'Login', :class => 'btn' %>
     <span><%= link_to "Register", new_user_path %></span>
   </div>  
 <% end %>

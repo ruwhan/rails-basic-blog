@@ -1,6 +1,6 @@
 <h1>Listing posts</h1>
 
-<table>
+<table class="table table-stripped">
   <tr>
     <th>Title</th>
     <th>Content</th>
@@ -17,10 +17,10 @@
     <td><%= post.content %></td>
     <td><%= post.created_at %></td>
     <td><%= post.last_updated_at %></td>
-    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Show', post, :class => 'btn' %></td>
   <% if post.owned_by? current_user %>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Edit', edit_post_path(post), :class => 'btn' %></td>
+    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-danger' %></td>
   <% end %>
   </tr>
 <% end %>
@@ -28,9 +28,9 @@
 
 <br />
 
-<%= link_to 'New Post', new_post_path %> |
-<% if current_user %>
+<%= link_to 'New Post', new_post_path, :class => 'btn' %> 
+<!--|<% if current_user %>
   <%= link_to 'logout', logout_path %>
 <% else %>
   <%= link_to 'login', login_path %>
-<% end %>
+<% end %>-->

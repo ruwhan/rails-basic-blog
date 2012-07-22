@@ -1,13 +1,14 @@
 <%= div_for comment do %>
 <div>
-  <strong>
-    <p><%= comment.name %> said:</p>
-  </strong>
-  <% if comment.post.owned_by? current_user %>
-    <%= link_to 'Delete', [@post, comment], :confirm => "Are you sure?", :method => :delete, :remote => true %>
-  <% end %>
+    <p>
+		<strong><%= comment.name %></strong> said:
+	<% if comment.post.owned_by? current_user %>
+		<span><%= link_to ' Delete', [@post, comment], :confirm => "Are you sure?", :method => :delete, :remote => true, :class => 'icon-remove label label-important' %></span>
+	<% end %>
+	</p>
+  
 </div>
 <div>
-  <p><%= comment.comment %></p>
+  <blockquote><p><%= comment.comment %></p></blockquote>
 </div>
 <% end %>
