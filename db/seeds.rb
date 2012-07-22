@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Tag.create [{ :name => 'Random' },
+			{ :name => 'Others' },
+			{ :name => 'Ruby' },
+			{ :name => 'Linux' },
+			{ :name => 'Browsers' },]

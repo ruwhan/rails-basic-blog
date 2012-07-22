@@ -1,25 +1,28 @@
-<div class="row">
-	<div class="page-header">
-		<h1><%= link_to post.title, post %></h1>
-	</div>
+<div class="page-header">
+	<h1><%= link_to post.title, post %></h1>
+	<span>Tagged with 
+		<% post.tags.each do |tag| %>
+			<%= tag.name %>,
+		<% end %>
+	</span>
+</div>
 
-	<div>
-		<%= simple_format post.content %>
-	</div>
+<div>
+	<%= simple_format post.content %>
+</div>
 
-	<% if post.user %>
-	<div>
-		<blockquote class="pull-right"><small>
-			written by <cite><%= post.user.email %></cite>
-		</small></blockquote>
-	</div>
-	<% end %>
-
-	<div>
-<% if current_user %>
-	<% if post.owned_by? current_user %>
-		<%= link_to '  Edit', edit_post_path(post), :class => 'label label-info icon-pencil' %> |
-	<% end %>
+<% if post.user %>
+<div>
+	<blockquote class="pull-right"><small>
+		written by <cite><%= post.user.email %></cite>
+	</small></blockquote>
+</div>
 <% end %>
-	</div>
+
+<div>
+<% if current_user %>
+<% if post.owned_by? current_user %>
+	<%= link_to '  Edit', edit_post_path(post), :class => 'label label-info icon-pencil' %> |
+<% end %>
+<% end %>
 </div>

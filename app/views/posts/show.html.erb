@@ -2,6 +2,11 @@
 
 <div class="page-header">
 	<h1><%= @post.title %></h1>
+	<span>Tagged with 
+		<% @post.tags.each do |tag| %>
+			<%= tag.name %>,
+		<% end %>
+	</span>
 </div>
 
 <div>
