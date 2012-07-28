@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  email: MyString
-  password: MyString
+admin:
+  email: 'aaa@fake.dom'
+  password: '7c4a8d09ca3762af61e59520943dc26494f8941b' 
 
-two:
-  email: MyString
-  password: MyString
+# one:
+#   email: MyString
+#   password: MyString
+
+# two:
+#   email: MyString
+#   password: MyString

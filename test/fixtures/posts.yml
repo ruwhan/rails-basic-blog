@@ -1,13 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  title: MyString
-  content: MyText
-  created_at: 2012-07-21 06:26:56
-  last_updated_at: 2012-07-21 06:26:56
+hello_world:
+  user: admin
+  title: "Hello World"
+  content: "First rails unit test on my blog post"
+  created_at: <%= DateTime.now %>
+  last_updated_at: <%= DateTime.now %>
+  
 
-two:
-  title: MyString
-  content: MyText
-  created_at: 2012-07-21 06:26:56
-  last_updated_at: 2012-07-21 06:26:56
+#one:
+  #title: MyString
+  #content: MyText
+  #created_at: 2012-07-21 06:26:56
+  #last_updated_at: 2012-07-21 06:26:56
+
+#two:
+  #title: MyString
+  #content: MyText
+  #created_at: 2012-07-21 06:26:56
+  #last_updated_at: 2012-07-21 06:26:56

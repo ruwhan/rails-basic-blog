@@ -22,11 +22,10 @@
   <div class="control-group">
     <%= f.label "Tags" %><br />
     <% for tag in Tag.all %>
-		<label>
-			<%= check_box_tag 'post[tag_ids][]', tag.id, @post.tag_ids.include?(tag.id), 
-				:id => dom_id(tag) %><%= label_tag dom_id(tag), tag.name, 
+	  <%= check_box_tag 'post[tag_ids][]', tag.id, @post.tag_ids.include?(tag.id), 
+				:id => dom_id(tag) %>
+	  <%= label_tag dom_id(tag), tag.name, 
 				:class => 'check_box_label' %>
-		</label>
     <% end %>
   </div>
   <div class="actions">
