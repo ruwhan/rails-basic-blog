@@ -1,11 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  comment: MyText
-  post: 
+some_comment:
+  post: hello_world
+  name: "tester"
+  comment: "Hi, this is dummy comment"
 
-two:
-  name: MyString
-  comment: MyText
-  post: 
+#one:
+  #name: MyString
+  #comment: MyText
+  #post: 
+
+#two:
+  #name: MyString
+  #comment: MyText
+  #post: 
