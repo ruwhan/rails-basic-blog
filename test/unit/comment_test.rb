@@ -6,7 +6,7 @@ class CommentTest < ActiveSupport::TestCase
   # end
   
   test "create comment" do
-    post = posts(:hello_world)
+    post = comments(:some_comment).post
     comment = post.comments.new
     comment.name = "visitor"
     comment.comment = "testin testing, only testing"
@@ -15,13 +15,12 @@ class CommentTest < ActiveSupport::TestCase
   end
   
   test "find comment" do
-    comment = posts(:hello_world).comments.first
-    comment_id = comment.id
-    assert_nothing_raised { Comment.find(comment_id) }
+    comment = comments(:some_comment)
+    assert_nothing_raised { Comment.find(comment.id) }
   end
   
   test "update comment" do
-    comment = posts(:hello_world).comments.first
+    comment = comments(:some_comment)
     assert comment.update_attributes(:comment => 'comment updated!')
   end
   
@@ -38,6 +37,7 @@ class CommentTest < ActiveSupport::TestCase
     assert comment.errors[:comment].any?
     assert_equal ["can't be blank"], comment.errors[:name]
     assert_equal ["can't be blank", "is too short (minimum is 3 characters)"], comment.errors[:comment]
+    assert_equal nil, comment.post
     assert !comment.save
   end
 end
