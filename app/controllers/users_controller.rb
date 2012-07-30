@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     
     if @user.save
+      Notifier.send_notification(@user.email).deliver
       redirect_to posts_path, :notice => 'User successfully added.'
     else
       render :action => 'new'

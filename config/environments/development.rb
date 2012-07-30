@@ -34,4 +34,18 @@ BlogLearning::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # Email configuration
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  
+  # Use Gmail SMTP server
+  ActionMailer::Base.smtp_settings = {
+    :address => 'smtp.gmail.com',
+    :enable_starttls_auto => true,
+    :port => 587,
+    :authentication => :plain,
+    :user_name => 'rullyabdullah@gmail.com',
+    :password => ''
+  }
 end
