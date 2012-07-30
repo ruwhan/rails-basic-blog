@@ -24,6 +24,14 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :redirect
     assert_redirected_to posts_path
   end
+  
+  test "should not create user because wrong password confirmation" do
+    assert_difference('User.count', 0) do
+      post :create, :user => { :email => 'someemail@fake.dom', 
+							:password => 'abc123',
+							:password_confirmation => 'abc1234' }
+    end
+  end
 
   test "should get edit" do
     login_as(:admin)
