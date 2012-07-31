@@ -1,9 +1,5 @@
 BlogLearning::Application.routes.draw do
   get "home/index"
-
-  #get "comments/create"
-
-  #get "comments/destroy"
   
   root :to => "home#index"
 
@@ -13,9 +9,11 @@ BlogLearning::Application.routes.draw do
   
   resources :users
   resource :session
+  resource :verification
   
   match '/login' => "sessions#new", :as => "login"
   match '/logout' => "sessions#destroy", :as => "logout"
+  match '/verify/:token' => "verifications#update", :as => "verify"
   
 
   # The priority is based upon order of creation:

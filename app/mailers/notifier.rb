@@ -6,8 +6,10 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.send_notification.subject
   #
-  def send_notification(receiver_email_address)
-    @greeting = "Hello, thanks for register at blog learning."
+  def send_notification(receiver_email_address, domain, token)
+    @greeting = "Hello, thanks for register at blog learning. To verify you account please click the following link: "
+    @domain = domain
+    @token = token
 
     mail :to => receiver_email_address, :subject => 'Welcome to blog learning'
   end
