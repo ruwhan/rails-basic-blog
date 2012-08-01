@@ -40,6 +40,8 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = current_user.posts.find(params[:id])
+    
+    @tag_names = Tag.find(@post.tag_ids.to_a, :select => :name).map(&:name).to_s.delete('[]"') + ', '
   end
 
   # POST /posts
@@ -49,6 +51,9 @@ class PostsController < ApplicationController
     current_datetime = DateTime.now
     @post.created_at = current_datetime
     @post.last_updated_at = current_datetime
+    if params[:post_tags]
+      @post.tag_ids = tagging_post(params[:post_tags].split(', '))
+    end
 
     respond_to do |format|
       if @post.save
@@ -67,7 +72,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     current_datetime = DateTime.now
     @post.last_updated_at = current_datetime
-
+    if params[:post_tags]
+      @post.tag_ids = tagging_post(params[:post_tags].split(', '))
+    end
+    
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -90,4 +98,15 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private 
+    def tagging_post(tag_names)
+      tag_ids = Array.new
+      tag_names = tag_names.uniq
+      tag_names.each do |name|
+        tag = Tag.find_or_create_by_name(name)
+        tag_ids << tag.id
+      end
+      return tag_ids
+    end
 end

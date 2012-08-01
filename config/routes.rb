@@ -8,12 +8,14 @@ BlogLearning::Application.routes.draw do
   end
   
   resources :users
+  resources :tags
   resource :session
   resource :verification
   
   match '/login' => "sessions#new", :as => "login"
   match '/logout' => "sessions#destroy", :as => "logout"
   match '/verify/:token' => "verifications#update", :as => "verify"
+  match '/tags.json/:term' => "tags#index", :as => "get_tags"
   
 
   # The priority is based upon order of creation:
