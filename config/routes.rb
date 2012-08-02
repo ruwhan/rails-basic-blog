@@ -1,5 +1,4 @@
 BlogLearning::Application.routes.draw do
-  #get "home/index"
   
   root :to => "home#index"
   
@@ -16,7 +15,6 @@ BlogLearning::Application.routes.draw do
   end
   
   scope "/admin" do
-    #match ":controller(/:action(/:id))"
     resources :posts do
       resources :comments
     end
@@ -26,13 +24,7 @@ BlogLearning::Application.routes.draw do
     
     match '/admin/tags.json/:term' => "tags#index", :as => "get_tags"
   end
-
-  #resources :posts do
-  #  resources :comments
-  #end
   
-  #resources :users
-  #resources :tags
   resource :session
   resource :verification
   
