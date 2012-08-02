@@ -5,6 +5,7 @@ BlogLearning::Application.routes.draw do
   
   namespace :admin do 
     resources :posts do
+      get '/page/:page', :action => :index, :on => :collection
       resources :comments
     end
     

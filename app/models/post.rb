@@ -8,6 +8,8 @@ class Post < ActiveRecord::Base
   validates :content, :presence => true,
                       :length => { :minimum => 10 }
                       
+  paginates_per 3
+  
   def owned_by?(owner)
     return false unless owner.is_a? User
     user == owner
