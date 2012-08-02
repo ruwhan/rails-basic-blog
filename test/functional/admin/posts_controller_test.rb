@@ -1,9 +1,8 @@
 require 'test_helper'
 
-class PostsControllerTest < ActionController::TestCase
+class Admin::PostsControllerTest < ActionController::TestCase
   setup do
     @post = posts(:hello_world)
-    @
   end
 
   test "should get index" do

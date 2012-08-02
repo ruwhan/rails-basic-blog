@@ -25,11 +25,7 @@
 </div>
 
 <div>
-<%= link_to "  New comment", new_post_comment_path(@post, :format => :js), :remote => true, :id => 'new_comment_link', :class => 'label label-info icon-book' %> |
-<% if current_user %>
-	<% if @post.owned_by? current_user %>
-		<%= link_to '  Edit', edit_post_path(@post), :class => 'label label-info icon-pencil' %> |
-	<% end %>
-<% end %>
+<%= link_to '  New comment', new_post_comment_path(@post, :format => :js), :remote => true, :id => 'new_comment_link', :class => 'label label-info icon-book' %> |
+<%= link_to '  Edit', edit_post_path(@post), :class => 'label label-info icon-pencil' %> |
 <%= link_to '  Back', root_path, :class => 'label label-info icon-align-justify' %>
 </div>

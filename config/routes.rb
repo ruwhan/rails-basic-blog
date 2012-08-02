@@ -1,21 +1,45 @@
 BlogLearning::Application.routes.draw do
-  get "home/index"
+  #get "home/index"
   
   root :to => "home#index"
-
-  resources :posts do
-    resources :comments
+  
+  namespace :admin do 
+    resources :posts do
+      resources :comments
+    end
+    
+    resources :users
+    resources :tags
+    
+    match '/admin/tags.json/:term' => "tags#index", :as => "get_tags"
   end
   
-  resources :users
-  resources :tags
+  scope "/admin" do
+    #match ":controller(/:action(/:id))"
+    resources :posts do
+      resources :comments
+    end
+    
+    resources :users
+    resources :tags
+    
+    match '/admin/tags.json/:term' => "tags#index", :as => "get_tags"
+  end
+
+  #resources :posts do
+  #  resources :comments
+  #end
+  
+  #resources :users
+  #resources :tags
   resource :session
   resource :verification
   
+  match '/blog/show/:id' => "home#show", :as => "blog"
+  match '/register' => "admin::users#new", :as => "register"
   match '/login' => "sessions#new", :as => "login"
   match '/logout' => "sessions#destroy", :as => "logout"
   match '/verify/:token' => "verifications#update", :as => "verify"
-  match '/tags.json/:term' => "tags#index", :as => "get_tags"
   
 
   # The priority is based upon order of creation:

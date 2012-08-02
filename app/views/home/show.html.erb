@@ -1,0 +1,32 @@
+<div id="alert"><%= notice %></div>
+
+<div class="page-header">
+	<h1><%= @post.title %></h1>
+	<span>Tagged with 
+		<% @post.tags.each do |tag| %>
+			<%= tag.name %>,
+		<% end %>
+	</span>
+</div>
+
+<div>
+	<%= simple_format @post.content %>
+</div>
+
+<div>
+	<blockquote class="pull-right"><small>
+		written by <cite><%= @post.user.email %></cite>
+	</small></blockquote>
+</div>
+
+<div id="comments">
+	<h2>Comments</h2>
+	<% @post.comments.each do |comment| %>
+	  <%= render :partial => '/admin/comments/comment', :object => comment %>
+	<% end %>
+</div>
+
+<div>
+<%= link_to '  New comment', new_post_comment_path(@post, :format => :js), :remote => true, :id => 'new_comment_link', :class => 'label label-info icon-book' %> |
+<%= link_to '  Back', root_path, :class => 'label label-info icon-align-justify' %>
+</div>

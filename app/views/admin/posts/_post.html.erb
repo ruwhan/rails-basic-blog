@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1><%= link_to post.title, post %></h1>
+	<h1><%= link_to post.title, blog_path(post) %></h1>
 	<span>Tagged with 
 		<% post.tags.each do |tag| %>
 			<%= tag.name %>,
@@ -19,10 +19,10 @@
 </div>
 <% end %>
 
-<div>
-<% if current_user %>
-<% if post.owned_by? current_user %>
-	<%= link_to '  Edit', edit_post_path(post), :class => 'label label-info icon-pencil' %> |
-<% end %>
-<% end %>
-</div>
+<!--<div>
+<%# if current_user %>
+<%# if post.owned_by? current_user %>
+	<%#= link_to '  Edit', edit_post_path(post), :class => 'label label-info icon-pencil' %> |
+<%# end %>
+<%# end %>
+</div>-->

@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Admin::CommentsController < ApplicationController
   before_filter :authenticate, :only => :destroy
   
   def new

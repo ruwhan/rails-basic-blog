@@ -12,7 +12,7 @@ extractLast = (term) ->
 jQuery ->
   autoProp = 
     source: (request, response) -> 
-      $.getJSON('/tags.json', { term: extractLast(request.term) }, response)
+      $.getJSON('/admin/tags.json', { term: extractLast(request.term) }, response)
     search: ->
       term = extractLast this.value
       if term.length == 0

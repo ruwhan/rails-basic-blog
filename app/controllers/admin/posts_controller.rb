@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Admin::PostsController < ApplicationController
   before_filter :authenticate, :except => [:show]
   # GET /posts
   # GET /posts.json

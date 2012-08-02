@@ -1,6 +1,6 @@
 require 'digest'
 
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   before_filter :authenticate, :only => [:edit, :update]
   
   def new

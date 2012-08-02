@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class Admin::TagsController < ApplicationController
   def index
     term = params[:term]
     @tags = Tag.find(:all, :select => :name, :conditions => "name LIKE '%#{term}%'").map(&:name)
