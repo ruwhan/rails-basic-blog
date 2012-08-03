@@ -55,6 +55,10 @@ class Admin::PostsController < ApplicationController
     if params[:post_tags]
       @post.tag_ids = tagging_post(params[:post_tags].split(', '))
     end
+    
+    if params[:commit] != "save"
+      @post.published_date = current_datetime
+    end
 
     respond_to do |format|
       if @post.save
@@ -75,6 +79,10 @@ class Admin::PostsController < ApplicationController
     @post.last_updated_at = current_datetime
     if params[:post_tags]
       @post.tag_ids = tagging_post(params[:post_tags].split(', '))
+    end
+    
+    if params[:commit] != "save"
+      @post.published_date = current_datetime
     end
     
     respond_to do |format|

@@ -2,7 +2,7 @@
 <table class="table table-stripped">
   <tr>
     <th>Title</th>
-    <th>Content</th>
+    <th>Published date</th>
     <th>Created at</th>
     <th>Last updated at</th>
     <th></th>
@@ -13,7 +13,7 @@
 <% @posts.each do |post| %>
   <tr>
     <td><%= post.title %></td>
-    <td><%= post.content %></td>
+    <td><%= post.published_date %></td>
     <td><%= post.created_at %></td>
     <td><%= post.last_updated_at %></td>
     <td><%= link_to 'Show', post, :class => 'btn' %></td>

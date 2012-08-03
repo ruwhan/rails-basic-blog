@@ -23,16 +23,10 @@
 	<%= label_tag 'post-tags', nil, :class => 'check_box_label' %>
 	<%= text_field_tag 'post_tags', nil, :placeholder => 'select tag', :id => 'post-tags', :value => @tag_names %>
   </div>
-  <!--<%#<div class="control-group">
-    <%= f.label "Tags" %><br />
-    <% for tag in Tag.all %>
-	  <%= check_box_tag 'post[tag_ids][]', tag.id, @post.tag_ids.include?(tag.id), 
-				:id => dom_id(tag) %>
-	  <%= label_tag dom_id(tag), tag.name, 
-				:class => 'check_box_label' %>
-    <% end %>
-  </div>%>-->
   <div class="actions">
-    <%= f.submit :class => 'btn' %>
+      <%= f.submit :class => 'btn' %>
+	<% if !@post.published_date %>
+      <%= submit_tag 'save', :class => 'btn', :id => 'save_unpublish' %>
+    <% end %>
   </div>
 <% end %>
