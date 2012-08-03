@@ -45,7 +45,7 @@ BlogLearning::Application.configure do
     :enable_starttls_auto => true,
     :port => 587,
     :authentication => :plain,
-    :user_name => 'rullyabdullah@gmail.com',
-    :password => '413DULL4H@6M.C0M'
+    :user_name => '',
+    :password => ''
   }
 end

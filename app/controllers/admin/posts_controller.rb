@@ -4,7 +4,7 @@ class Admin::PostsController < ApplicationController
   # GET /posts.json
   def index
     if current_user
-      @posts = current_user.posts.order(:created_at).page params[:page]
+      @posts = current_user.posts.order('created_at DESC, published_date DESC').page params[:page]
       #@posts = current_user.posts.all
     else
       @posts = Post.all

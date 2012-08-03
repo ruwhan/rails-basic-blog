@@ -1,5 +1,7 @@
 BlogLearning::Application.routes.draw do
   
+  get 'page/:page', :controller => :home, :action => :index
+  
   root :to => "home#index"
   
   namespace :admin do 

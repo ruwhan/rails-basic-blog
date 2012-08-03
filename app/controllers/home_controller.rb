@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.find(:all, :conditions => 'published_date IS NOT NULL')
+    @posts = Post.page(params[:page]).order('created_at DESC, published_date DESC').where('published_date IS NOT NULL')
   end
   
   def show
