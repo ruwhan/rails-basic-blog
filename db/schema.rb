@@ -33,8 +33,6 @@ ActiveRecord::Schema.define(:version => 20120803001642) do
     t.datetime "published_date"
   end
 
-  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
-
   create_table "posts_tags", :id => false, :force => true do |t|
     t.integer "post_id"
     t.integer "tag_id"
